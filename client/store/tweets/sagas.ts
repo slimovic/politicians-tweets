@@ -1,18 +1,16 @@
-import {
-    all,
-    fork,
-    put,
-    takeEvery,
-} from 'redux-saga/effects';
+import { all, fork, put, takeEvery, call } from 'redux-saga/effects';
 import { getType } from 'typesafe-actions';
-import { Tweet } from './reducer';
+import { Tweet } from '../../data/tweets';
 import { getTweets as getTweetsAction } from './actions';
 import { init as initAction } from './actions';
+import { getTweetsData } from '../../data/tweets';
+import { politcians } from './reducer';
 
 export function* getTweets() {
     let tweets: Tweet[];
     try {
-        // tweets = yield call(dataRepo.tweets.all);
+        tweets = yield call(getTweetsData, politcians.TRUMP);
+        console.log(tweets);
         yield put(getTweetsAction.success(tweets));
     } catch (err) {
         yield put(getTweetsAction.failure(err));

@@ -3,8 +3,12 @@ import { LocationChangeAction } from 'connected-react-router';
 import { getType } from 'typesafe-actions';
 import * as queryString from 'query-string';
 
-import { goToDashboardPolitician, goToDefaultPolitician as goToDefaultPoliticianAction } from './actions';
+import {
+    goToDashboardPolitician,
+    goToDefaultPolitician as goToDefaultPoliticianAction,
+} from './actions';
 import { ApplicationState } from '../index';
+import { getTweets } from '../tweets/actions';
 
 export const getState = (state: ApplicationState) => state;
 
@@ -13,15 +17,14 @@ function* goToDefaultPolitician() {
 }
 
 function* handleDashboardWithDefaultPolitician(action: LocationChangeAction) {
-    const { politician } = queryString.parse(action.payload.location.search);
-    console.log(action)
+    const { politician }= queryString.parse(action.payload.location.search);
     if (politician) {
-        console.log(politician);
-        // console.log('working');
-    } else {
-        console.log('working2');
-        // yield goToDefaultPolitician();
+        yield put(getTweets.request(politician as string));
     }
+    // else {
+    //     console.log('working2');
+    //     // yield goToDefaultPolitician();
+    // }
 }
 
 export function* locationChange(action: LocationChangeAction) {
@@ -38,7 +41,10 @@ function* watchLocationChange() {
 }
 
 function* watchGoToDefaultPolitician() {
-    yield takeEvery(getType(goToDefaultPoliticianAction), goToDefaultPolitician);
+    yield takeEvery(
+        getType(goToDefaultPoliticianAction),
+        goToDefaultPolitician
+    );
 }
 
 function* routerSaga() {

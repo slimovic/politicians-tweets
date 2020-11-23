@@ -1,4 +1,4 @@
-import * as express from 'express';
+import express from 'express'
 import * as bodyParser from 'body-parser';
 import * as http from 'http';
 import * as path from 'path';
@@ -15,8 +15,9 @@ const server = http.createServer(app);
 app.use(express.static(path.join(__dirname, '../client/dist/')));
 app.use('/dashboard', express.static(path.join(__dirname, '../client/dist/')));
 
-app.get('/tweets/:politician', async (req, res) => {
-    const tweets: Tweet[] = await getTweets('realDonaldTrump');
+app.get('/api/tweets/:politician', async (req: any, res: any) => {
+    const politician = req?.params?.politician;
+    const tweets: Tweet[] = await getTweets(politician);
     res.send(tweets);
 });
 
