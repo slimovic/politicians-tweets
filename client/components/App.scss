@@ -10,5 +10,10 @@ body,
 
 body {
   background-color: $base-background-color;
-  overflow-x: hidden;
+  overflow: hidden;
+}
+
+header.not-scrolled {
+  box-shadow: none;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }

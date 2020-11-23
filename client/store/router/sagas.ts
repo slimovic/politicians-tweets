@@ -9,15 +9,18 @@ import { ApplicationState } from '../index';
 export const getState = (state: ApplicationState) => state;
 
 function* goToDefaultPolitician() {
-    yield put(goToDashboardPolitician('xxxxx'));
+    yield put(goToDashboardPolitician('trump'));
 }
 
 function* handleDashboardWithDefaultPolitician(action: LocationChangeAction) {
-    const { politicianId } = queryString.parse(action.payload.location.search);
-    if (politicianId) {
-        // get politician tweets
+    const { politician } = queryString.parse(action.payload.location.search);
+    console.log(action)
+    if (politician) {
+        console.log(politician);
+        // console.log('working');
     } else {
-        yield goToDefaultPolitician();
+        console.log('working2');
+        // yield goToDefaultPolitician();
     }
 }
 

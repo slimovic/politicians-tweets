@@ -9,13 +9,14 @@ import createRootReducer, { ApplicationState } from './store';
 
 import routerSaga from './store/router/sagas';
 import tweetsSaga from './store/tweets/sagas';
+import { goToDefaultPolitician } from './store/router/actions';
 
 const reduxPromiseListener = createReduxPromiseListener();
 export const promiseListener = reduxPromiseListener;
 
 export default function configureStore(
     history: History,
-    initialState: ApplicationState,
+    initialState: ApplicationState
 ): Store<ApplicationState> {
     const composeEnhancers = composeWithDevTools({});
     // create the redux-saga middlewares
@@ -26,7 +27,13 @@ export default function configureStore(
     const store = createStore(
         createRootReducer(history),
         initialState,
-        composeEnhancers(applyMiddleware(routerMiddleware(history), sagaMiddleware, reduxPromiseListener.middleware)),
+        composeEnhancers(
+            applyMiddleware(
+                routerMiddleware(history),
+                sagaMiddleware,
+                reduxPromiseListener.middleware
+            )
+        )
     );
 
     function* rootSaga() {
@@ -36,7 +43,7 @@ export default function configureStore(
 
     sagaMiddleware.run(rootSaga);
 
-    // store.dispatch(init());
+    // store.dispatch(goToDefaultPolitician());
 
     return store;
 }

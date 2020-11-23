@@ -5,7 +5,6 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import { createBrowserHistory } from 'history';
 import { ConnectedRouter } from 'connected-react-router';
 import { StoreContext } from 'redux-react-hook';
-import { SnackbarProvider } from 'notistack';
 
 import App from './components/App';
 import { theme } from './config/themes';
@@ -20,10 +19,8 @@ ReactDOM.render(
         <StoreContext.Provider value={store}>
             <MuiThemeProvider theme={theme}>
                 <ConnectedRouter history={history}>
-                    <React.Suspense fallback={<div>add loading component</div>}>
-                        <SnackbarProvider maxSnack={3}>
-                            <App />
-                        </SnackbarProvider>
+                    <React.Suspense fallback={<div>Loading tweets</div>}>
+                        <App />
                     </React.Suspense>
                 </ConnectedRouter>
             </MuiThemeProvider>

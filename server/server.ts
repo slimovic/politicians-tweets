@@ -20,5 +20,7 @@ const server = http.createServer(app);
 // const BEARER_TOKEN = process.env.TWITTER_BEARER_TOKEN;
 
 app.use(express.static(path.join(__dirname, '../client/dist/')));
+app.use('/dashboard', express.static(path.join(__dirname, '../client/dist/')));
+
 
 server.listen(port, () => console.log(`Listening on port ${port}`));
