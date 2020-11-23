@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "webpack --mode development --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Slim Khadhraoui",
@@ -23,6 +24,9 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.2",
+    "react-redux-promise-listener": "^1.0.0",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
     "redux-devtools-extension": "^2.13.8",
     "redux-promise-listener": "^1.1.1",
     "redux-react-hook": "^4.0.3",
@@ -32,5 +36,20 @@
     "typesafe-actions": "^4.3.0",
     "util": "^0.12.3"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@babel/core": "^7.12.7",
+    "@babel/preset-env": "^7.12.7",
+    "@babel/preset-react": "^7.12.7",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-redux": "^7.1.11",
+    "babel-loader": "^8.2.1",
+    "css-loader": "^5.0.1",
+    "node-sass": "^5.0.0",
+    "sass-loader": "^10.1.0",
+    "style-loader": "^2.0.0",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2",
+    "webpack": "^5.6.0",
+    "webpack-cli": "^4.2.0"
+  }
 }
