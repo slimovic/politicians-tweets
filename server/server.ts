@@ -16,9 +16,14 @@ app.use(express.static(path.join(__dirname, '../client/dist/')));
 app.use('/dashboard', express.static(path.join(__dirname, '../client/dist/')));
 
 app.get('/api/tweets/:politician', async (req: any, res: any) => {
-    const politician = req?.params?.politician;
-    const tweets: Tweet[] = await getTweets(politician);
-    res.send(tweets);
+    try {
+        const politician = req?.params?.politician;
+        const tweets: Tweet[] = await getTweets(politician);
+        res.send(tweets);
+    }
+    catch(err) {
+        console.log(err)
+    }
 });
 
 server.listen(port, () => console.log(`Listening on port ${port}`));

@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode development --watch",
-    "run-server": "ts-node server/server.ts",
+    "build": "webpack --mode development",
+    "build-watch": "webpack --mode development --watch",
+    "run": "ts-node server/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Slim Khadhraoui",
@@ -51,6 +52,7 @@
     "sass-loader": "^10.1.0",
     "style-loader": "^2.0.0",
     "ts-loader": "^8.0.11",
+    "ts-node": "^9.0.0",
     "typescript": "^4.1.2",
     "webpack": "^5.6.0",
     "webpack-cli": "^4.2.0"
