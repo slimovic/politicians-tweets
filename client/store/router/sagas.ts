@@ -4,34 +4,31 @@ import { getType } from 'typesafe-actions';
 import * as queryString from 'query-string';
 
 import {
-    goToDashboardPolitician,
+    goToPoliticianDashboard,
     goToDefaultPolitician as goToDefaultPoliticianAction,
 } from './actions';
-import { ApplicationState } from '../index';
-import { getTweets } from '../tweets/actions';
 
-export const getState = (state: ApplicationState) => state;
+import { getTweets } from '../tweets/actions';
+import { politicians } from '../tweets/reducer';
+
+// export const getState = (state: ApplicationState) => state;
 
 function* goToDefaultPolitician() {
-    yield put(goToDashboardPolitician('trump'));
+    yield put(goToPoliticianDashboard(politicians?.TRUMP.id));
 }
 
 function* handleDashboardWithDefaultPolitician(action: LocationChangeAction) {
-    const { politician }= queryString.parse(action.payload.location.search);
+    const { politician } = queryString.parse(action.payload.location.search);
     if (politician) {
         yield put(getTweets.request(politician as string));
     }
-    // else {
-    //     console.log('working2');
-    //     // yield goToDefaultPolitician();
-    // }
 }
 
 export function* locationChange(action: LocationChangeAction) {
     const path = action.payload.location.pathname;
     if (path === '/') {
         yield goToDefaultPolitician();
-    } else if (path === '/dashboard') {
+    } else if (path.includes('/dashboard')) {
         yield handleDashboardWithDefaultPolitician(action);
     }
 }

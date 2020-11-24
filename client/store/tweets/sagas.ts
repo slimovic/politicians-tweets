@@ -4,12 +4,11 @@ import { Tweet } from '../../data/tweets';
 import { getTweets as getTweetsAction } from './actions';
 import { init as initAction } from './actions';
 import { getTweetsData } from '../../data/tweets';
-import { politcians } from './reducer';
 
-export function* getTweets() {
+export function* getTweets(action: any) {
     let tweets: Tweet[];
     try {
-        tweets = yield call(getTweetsData, politcians.TRUMP);
+        tweets = yield call(getTweetsData, action?.payload);
         console.log(tweets);
         yield put(getTweetsAction.success(tweets));
     } catch (err) {
@@ -18,7 +17,7 @@ export function* getTweets() {
 }
 
 export function* init() {
-    yield getTweets();
+    // yield getTweets({ payload: politicians?.TRUMP.id });
 }
 
 function* watchInit() {

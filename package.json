@@ -29,7 +29,7 @@
     "react-redux": "^7.2.2",
     "react-redux-promise-listener": "^1.0.0",
     "react-router-dom": "^5.2.0",
-    "react-twitter-widgets": "^1.9.5",
+    "react-tweet": "^1.7.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-promise-listener": "^1.1.1",
     "redux-react-hook": "^4.0.3",
