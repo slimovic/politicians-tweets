@@ -9,7 +9,6 @@ export function* getTweets(action: any) {
     let tweets: Tweet[];
     try {
         tweets = yield call(getTweetsData, action?.payload);
-        console.log(tweets);
         yield put(getTweetsAction.success(tweets));
     } catch (err) {
         yield put(getTweetsAction.failure(err));

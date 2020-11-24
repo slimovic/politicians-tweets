@@ -16,7 +16,7 @@ export const getTweets = async (politician: string): Promise<Tweet[]> => {
     try {
         const params = {
             screen_name: politician,
-            count: (process.env.TWITTER_COUNT || 15) ,
+            count: (process.env.TWITTER_COUNT || 9) ,
         };
         return twitterClient.get('statuses/user_timeline', params);
     } catch (err) {
