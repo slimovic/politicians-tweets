@@ -1,4 +1,4 @@
-import express from 'express'
+import express from 'express';
 import * as bodyParser from 'body-parser';
 import * as http from 'http';
 import * as path from 'path';
@@ -20,9 +20,8 @@ app.get('/api/tweets/:politician', async (req: any, res: any) => {
         const politician = req?.params?.politician;
         const tweets: Tweet[] = await getTweets(politician);
         res.send(tweets);
-    }
-    catch(err) {
-        console.log(err)
+    } catch (err) {
+        console.log(err);
     }
 });
 

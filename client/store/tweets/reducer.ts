@@ -21,11 +21,11 @@ export const tweetsReducer = createReducer<
     Readonly<TweetsStateType>,
     ActionType<typeof actions>
 >(tweetsInitialState)
-    .handleAction(
-        actions.getTweets.request,
-        (state, action) => ({ ...state, politician: action.payload })
-    )
-    .handleAction(
-    actions.getTweets.success,
-    (state, action) => ({ ...state, tweets: [...action.payload] })
-);
+    .handleAction(actions.getTweets.request, (state, action) => ({
+        ...state,
+        politician: action.payload,
+    }))
+    .handleAction(actions.getTweets.success, (state, action) => ({
+        ...state,
+        tweets: [...action.payload],
+    }));
