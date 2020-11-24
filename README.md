@@ -1,6 +1,7 @@
 This app shows the latest tweets of Donald Trump and Hilary Clinton, a button is available to navigate between the two views.
 
 ## DEMO
+Check this [demo](https://politicians-tweets.herokuapp.com)
 
 ## INSTALLATION
 Install the dependencies: `npm i`
